@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>김의식 · 백엔드 · 플랫폼 · DevOps 엔지니어</title>
+  <meta name="description" content="서버리스 플랫폼을 운영하고 이벤트 플랫폼을 설계·개발하는 클라우드 플랫폼 엔지니어 김의식의 경력 포트폴리오">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="김의식 · 경력 포트폴리오">
+  <meta property="og:title" content="김의식 · 백엔드 · 플랫폼 · DevOps 엔지니어">
+  <meta property="og:description" content="서버리스 플랫폼을 운영하고 이벤트 플랫폼을 설계·개발하는 클라우드 플랫폼 엔지니어">
+  <meta name="theme-color" content="#1f6f5c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f6f5c'/%3E%3Ctext x='32' y='43' font-family='sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EYS%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <style>
+:root {
+  --bg: #fbfbfa;
+  --surface: #ffffff;
+  --text: #1c1d1f;
+  --muted: #5f6368;
+  --faint: #6b7076;
+  --line: #e6e6e3;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f2ee;
+  --chip: #f1f1ef;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .04), 0 4px 16px rgba(0, 0, 0, .04);
+  --radius: 14px;
+  --wrap: 980px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111314;
+    --surface: #181b1c;
+    --text: #e9eaea;
+    --muted: #a4a9ad;
+    --faint: #868c91;
+    --line: #2a2e30;
+    --accent: #5cc4a6;
+    --accent-soft: #16302a;
+    --chip: #222628;
+    --shadow: none;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 24px; }
+
+/* nav */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 16px; }
+.nav .brand { font-weight: 700; color: var(--text); letter-spacing: -.01em; white-space: nowrap; }
+.nav ul { display: flex; gap: 20px; list-style: none; margin: 0 -6px; padding: 4px 6px; overflow-x: auto; scrollbar-width: none; }
+.nav ul::-webkit-scrollbar { display: none; }
+.nav ul a { color: var(--muted); font-size: 14px; white-space: nowrap; }
+.nav ul a:hover { color: var(--text); text-decoration: none; }
+
+/* hero */
+.hero { padding-block: 88px 56px; }
+.eyebrow { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: .02em; margin: 0 0 14px; }
+.hero h1 { font-size: clamp(40px, 7vw, 64px); line-height: 1.1; letter-spacing: -.035em; margin: 0; }
+.hero .role { font-size: clamp(18px, 2.4vw, 22px); color: var(--muted); margin: 14px 0 0; font-weight: 500; }
+.hero .lead { font-size: 17px; max-width: 720px; margin: 28px 0 0; color: var(--text); }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 40px; }
+.fact { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); }
+.fact b { display: block; font-size: 20px; letter-spacing: -.02em; }
+.fact span { color: var(--muted); font-size: 13px; }
+
+/* sections */
+section { padding-block: 56px; border-top: 1px solid var(--line); }
+.section-title { display: flex; align-items: baseline; gap: 12px; margin: 0 0 28px; }
+.section-title h2 { font-size: 26px; letter-spacing: -.02em; margin: 0; }
+.section-title span { color: var(--faint); font-size: 14px; }
+
+/* competencies */
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+.card h3 { font-size: 17px; margin: 0 0 8px; letter-spacing: -.01em; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
+
+/* experience */
+.company { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; padding-block: 8px 40px; }
+.company + .company { border-top: 1px dashed var(--line); padding-top: 40px; }
+.company-head { position: sticky; top: 76px; align-self: start; }
+.company-head h3 { font-size: 22px; margin: 0; letter-spacing: -.02em; }
+.company-head .period { color: var(--accent); font-weight: 600; font-size: 14px; margin-top: 4px; }
+.company-head .team { color: var(--muted); font-size: 14px; margin-top: 6px; }
+
+.projects { display: flex; flex-direction: column; gap: 16px; }
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+.project-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.project h4 { font-size: 18px; margin: 0; letter-spacing: -.01em; line-height: 1.45; }
+.project .when { color: var(--faint); font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.badge { display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border-radius: 999px; padding: 1px 9px; margin-left: 6px; vertical-align: 2px; }
+.project .summary { color: var(--muted); margin: 8px 0 0; font-size: 15px; }
+.project ul:not(.chips) { margin: 14px 0 0; padding-left: 18px; }
+.project li { margin: 6px 0; font-size: 15px; }
+.project li::marker { color: var(--accent); }
+.project li strong { font-weight: 650; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; padding: 0; list-style: none; }
+.chips li { margin: 0; font-size: 12.5px; color: var(--muted); background: var(--chip); border-radius: 6px; padding: 2px 8px; }
+
+details.more { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+details.more > summary { cursor: pointer; list-style: none; padding: 16px 24px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+details.more > summary::-webkit-details-marker { display: none; }
+details.more > summary::after { content: "+"; content: "+" / ""; color: var(--accent); font-size: 20px; line-height: 1; }
+details.more[open] > summary::after { content: "−"; content: "−" / ""; }
+details.more > summary span { color: var(--faint); font-weight: 400; font-size: 14px; }
+details.more .projects { padding: 0 16px 16px; }
+details.more .project { box-shadow: none; }
+
+.project.compact { padding: 20px 24px; }
+.project.compact ul:not(.chips) { margin-top: 10px; }
+
+/* skills */
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.skill-group h3 { font-size: 14px; color: var(--faint); font-weight: 600; margin: 0 0 10px; letter-spacing: .02em; }
+.skill-group .chips { margin: 0; }
+.skill-group .chips li { font-size: 13.5px; color: var(--text); padding: 4px 10px; }
+
+/* education */
+.edu { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.edu .card .meta { color: var(--faint); font-size: 13px; margin-bottom: 6px; }
+.edu .card ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+.edu .card li { margin: 4px 0; }
+
+footer { border-top: 1px solid var(--line); padding-block: 32px 48px; color: var(--faint); font-size: 13px; }
+
+@media (max-width: 860px) {
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid, .edu { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .company { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .company-head { position: static; }
+}
+
+@media (max-width: 600px) {
+  .wrap { padding-inline: 16px; }
+  .hero { padding-block: 56px 40px; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid, .skills, .edu { grid-template-columns: minmax(0, 1fr); }
+  .project { padding: 20px 18px; }
+  details.more > summary { padding: 14px 18px; }
+  details.more .projects { padding: 0 10px 10px; }
+  .nav .brand { display: none; }
+}
+
+@media print {
+  .nav { display: none; }
+  :root { --bg:#fff; --surface:#fff; --text:#000; --muted:#3c4043; --faint:#5f6368; --line:#d0d0cc; --accent:#1f6f5c; --accent-soft:#e6f2ee; --chip:#f1f1ef; color-scheme:light; }
+  .hero { padding-block: 24px; }
+  .company-head { position: static; }
+  details.more::details-content { content-visibility: visible; block-size: auto; }
+  details.more > summary::after { content: none; }
+  h2, h3, h4, .section-title, .company-head { break-after: avoid; }
+  .project, .card, .fact { box-shadow: none; break-inside: avoid; }
+}
+  </style>
+</head>
+<body>
+
+<nav class="nav" aria-label="주요 메뉴">
+  <div class="wrap">
+    <a class="brand" href="#top">김의식</a>
+    <ul>
+      <li><a href="#competencies">핵심 역량</a></li>
+      <li><a href="#experience">경력</a></li>
+      <li><a href="#skills">기술</a></li>
+      <li><a href="#education">학력·자격</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top">
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow" lang="en">Backend · Platform · DevOps Engineer</p>
+      <h1>김의식</h1>
+      <p class="role">서버리스 플랫폼을 운영하고 이벤트 플랫폼을 설계·개발하는 클라우드 플랫폼 엔지니어</p>
+      <p class="lead">
+        2009년부터 Java 기반 웹 백엔드를 개발했고, 대규모 서비스 운영 경험을 쌓았습니다.
+        2021년 NHN에 합류한 뒤 NHN Cloud에서 Spinnaker·Tekton 배포 플랫폼과 Kubernetes(NKS) 운영을 맡았고,
+        지금은 Fission 기반 서버리스 상품 <strong>Cloud Functions</strong>의 개발·운영과
+        Kafka 기반 <strong>이벤트 라우팅 플랫폼</strong>의 설계·개발을 맡고 있습니다.
+        오픈소스 코드를 직접 읽어 원인을 찾고, 실측 수치로 개선 효과를 확인하며, 설계 결정은 ADR과 기술 문서로 남깁니다.
+      </p>
+      <div class="facts">
+        <div class="fact"><b>2009 ~ 현재</b><span>개발 경력</span></div>
+        <div class="fact"><b>NHN Cloud</b><span>2021.08 ~ 현재 · 플랫폼개발</span></div>
+        <div class="fact"><b>CKA</b><span>Certified Kubernetes Administrator</span></div>
+        <div class="fact"><b>Spinnaker</b><span>정기 업그레이드 수행</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="competencies" aria-labelledby="competencies-title">
+    <div class="wrap">
+      <div class="section-title"><h2 id="competencies-title">핵심 역량</h2></div>
+      <div class="grid">
+        <article class="card">
+          <h3>서버리스 플랫폼 개발·운영</h3>
+          <p>Fission·Kubernetes 기반 Cloud Functions의 아키텍처 설계부터 알파·베타 론칭, GA 전환 준비까지 참여했습니다. OpenTelemetry 기반 과금 체계 전환, 오토스케일·콜드 스타트 개선, gVisor 실행 격리를 맡았습니다.</p>
+        </article>
+        <article class="card">
+          <h3>이벤트 기반 아키텍처</h3>
+          <p>Kafka·Kafka Streams·CloudEvents 기반 이벤트 버스 상품의 수신·처리·전달 계층 설계에 참여하고, 이벤트 수신 계층과 콘솔 API를 직접 개발했습니다. 스키마·인증·로그 연동 결정은 ADR로, 토픽·전달 설계는 기술 문서로 남겼습니다.</p>
+        </article>
+        <article class="card">
+          <h3>CI/CD · Kubernetes 운영</h3>
+          <p>Spinnaker 정기 업그레이드와 후속 버전 전환 작업을 수행했습니다. Helm·Tekton·Jenkins 파이프라인을 개선하고, 일반·공공 리전 NKS 클러스터 업그레이드를 수행했습니다.</p>
+        </article>
+        <article class="card">
+          <h3>근거 기반 장애 분석</h3>
+          <p>Fission·Spinnaker 같은 오픈소스 코드를 직접 읽어 장애의 구조적 원인을 찾습니다. 전후 수치와 영향 범위를 측정해 결론과 개선 효과를 확인하고, 장애 보고서와 후속 과제까지 정리합니다.</p>
+        </article>
+        <article class="card">
+          <h3>문서화 · 협업</h3>
+          <p>기획 대비 구현 전수 대조, 사내 아키텍처 리뷰 발표, 정기 릴리스 계획·배포, 아키텍처·운영 문서 작성을 맡아 왔습니다. AI 코딩 에이전트를 활용한 개발·리뷰 절차도 만들었습니다.</p>
+        </article>
+        <article class="card">
+          <h3>시스템 프로그래밍 · 레거시 전환</h3>
+          <p>C/C++ 모니터링 Agent를 Solaris·AIX로 포팅했고, MFC 기반 Windows Agent의 Java 전환, Cubrid → MySQL 전환 등 레거시 시스템을 개선했습니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="experience-title">
+    <div class="wrap">
+      <div class="section-title"><h2 id="experience-title">경력</h2></div>
+
+      <!-- NHN Cloud -->
+      <div class="company">
+        <div class="company-head">
+          <h3>NHN Cloud</h3>
+          <div class="period">2021.08 ~ 현재</div>
+          <div class="team">플랫폼개발 · 클라우드 플랫폼 / DevOps 엔지니어</div>
+        </div>
+        <div class="projects">
+
+          <article class="project">
+            <div class="project-top">
+              <h4>Kafka 기반 이벤트 라우팅 플랫폼 설계·개발</h4>
+              <span class="when">2026.02 ~ 현재</span>
+            </div>
+            <p class="summary">Kafka·CloudEvents 기반 이벤트 라우팅 플랫폼의 아키텍처 설계, 이벤트 수신·처리·전달 계층과 콘솔 API 개발을 팀과 함께 진행하고 있습니다.</p>
+            <ul>
+              <li><strong>초기 설계와 이벤트 수신 계층 개발</strong> — 유사 서비스 조사로 아키텍처·이벤트 흐름을 정의하고, CloudEvents 표준화와 JSON Schema 검증을 갖춘 수신 계층을 직접 개발. Locust 부하 테스트로 수신 처리량 검증</li>
+              <li><strong>인증·인가·호출량 제한</strong> — 이벤트 발행 API에 사용자 토큰 인증을 도입하고 방식을 ADR로 기록(인증 기능 테스트 354개·라인 커버리지 94.4%). 권한 ID 기반 인가 구현(알파 검증 진행 중), 프로젝트·버스 단위 호출량 제한 적용</li>
+              <li><strong>콘솔·관리 API</strong> — 규칙·대상 설정 API와 낙관적 동시성 제어 구현. 24개 API의 오류 응답과 한/영/일 메시지를 통일하고, OpenAPI 명세의 오류 응답 선언을 1,124개 → 96개로, 콘솔에 중복 구현된 운영자용 관리 API를 제거해 콘솔 엔드포인트를 42개 → 25개로 정리</li>
+              <li><strong>감사 로그 이벤트 연동</strong> — 이벤트 표본 분석으로 개발 환경 수신 필터의 누락 원인을 찾아 수신 범위를 보완하고, 이벤트 타입별 스키마를 공통 기준으로 정리</li>
+              <li><strong>데이터로 정한 설계 기준</strong> — 이벤트 표본을 조사해 스키마 필수 필드를 최소화하는 방향을 정하고, 실측 대조를 근거로 프로젝트 격리 기준을 제안</li>
+              <li><strong>성능 기준선과 출시 준비</strong> — 알파 환경 저부하 조건에서 종단 지연 기준선을 측정. 기획 문서와 구현을 전수 대조해 출시 범위 논의 근거를 정리하고, 사내 아키텍처 리뷰 문서를 작성·발표</li>
+            </ul>
+            <ul class="chips">
+              <li>Java</li><li>Spring Boot 4</li><li>Spring Kafka</li><li>Spring Security</li><li>Apache Kafka</li><li>Kafka Streams</li><li>CloudEvents</li><li>Apicurio Registry</li><li>AWS Event Ruler</li><li>MySQL</li><li>OpenAPI</li><li>Locust</li><li>Kubernetes</li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h4>Cloud Functions 과금 체계 전환 및 GA 전환 준비</h4>
+              <span class="when">2026.01 ~ 현재</span>
+            </div>
+            <p class="summary">서버리스 상품의 과금 근거를 트레이스 기반으로 바꾸고 과금 정합성 결함을 바로잡았습니다. 정기 릴리스 계획·배포와 베타 → GA 전환 준비를 맡고 있습니다.</p>
+            <ul>
+              <li><strong>트레이스 기반 과금 전환</strong> — 과금 근거를 Prometheus 지표에서 OpenTelemetry 트레이스(ClickHouse)로 바꿔 운영 배포. 다중 라우터 환경에서도 중복 없이 집계되는 구조로 전환하고 운영 정합성 검증 수행</li>
+              <li><strong>운영 수집 스택 구축</strong> — ClickHouse·OpenTelemetry Collector 용량을 산정하고, 전환 중 사용량이 0으로 집계되지 않도록 단계별 전환 순서를 설계. 수집 유실 실험으로 재시도 설정 문제를 찾아 4개 환경에 반영</li>
+              <li><strong>과금 정합성 검증</strong> — 호출 경로·월 경계·서비스 비활성화 등 경계 조건별 사용량 집계를 점검·보완하고, 라우터 트레이스 → ClickHouse → 집계 배치까지 값이 일치함을 종단 검증</li>
+              <li><strong>ClickHouse 안정화</strong> — 메모리 한도 초과·INSERT 실패의 원인을 사용하지 않는 내부 테이블의 백그라운드 머지로 찾아 해소. 메모리 1.08GiB → 0.58GiB, 실패 0, 과금 데이터 유실 0</li>
+              <li><strong>정기 릴리스 주관</strong> — 런타임·Go 버전 최신화, 릴리스 노트·사용자 가이드 작성, 과금 집계 경계를 피한 배포 순서 설계, 베타 → GA 전환 신청</li>
+            </ul>
+            <ul class="chips">
+              <li>Go</li><li>OpenTelemetry</li><li>ClickHouse</li><li>Prometheus</li><li>MySQL</li><li>Fission</li><li>Kubernetes</li><li>Helm</li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h4>Cloud Functions 기능·안정성·보안 고도화</h4>
+              <span class="when">2026.01 ~ 현재</span>
+            </div>
+            <p class="summary">Fission·Kubernetes 기반 서버리스 상품의 신규 기능 기획·구현, 오픈소스 코드 수준의 장애 분석, 실행 격리·보안 강화, 상품 간 연동 설계를 맡고 있습니다.</p>
+            <ul>
+              <li><strong>함수 환경변수 주입 기능</strong> — 화면 설계(Figma)를 포함한 기획부터 Fission 확장, 6개 런타임(Node.js·.NET·Python·Go·Ruby·JVM) 구현, 관리 API까지 담당</li>
+              <li><strong>오토스케일 과다 확장 해결</strong> — 전용 배포 함수가 트래픽 없이 확장되던 원인을 CPU request 대비 실사용 불균형으로 규명. 하한 조정·버그 수정·회귀 테스트 후 운영 반영</li>
+              <li><strong>Fission 코드 분석 기반 장애 규명</strong> — 콜드 스타트 중 호출 전 타임아웃을 라우터 코드에서 규명하고, 풀 매니저 타임아웃을 executor 코드 수준에서 분석. 별도 운영 장애는 자원 한도 문제로 규명해 장애 보고서와 개선안 작성</li>
+              <li><strong>콜드 스타트 단축 실험</strong> — Python 빌드 산출물 재사용(4.88초 → 3.68초), 코드 압축 해제 병렬화(1.98초 → 0.30초) 효과를 확인해 개선 과제로 등록</li>
+              <li><strong>실행 격리·보안</strong> — gVisor 샌드박스와 네트워크·권한 정책으로 함수 실행 환경 격리를 강화하고 Kubernetes Gateway API 도입(운영은 Ingress와 병행)</li>
+              <li><strong>Go 배치 프레임워크</strong> — Task 인터페이스와 Retry·Timeout·Logging·Metrics 데코레이터 조립 구조로 재설계하고, 레거시 배치 7종의 단계별 이관 전략 수립</li>
+              <li><strong>상품 간 연동</strong> — 이벤트 라우팅 플랫폼과 함수 실행 연동 설계·개발(운영 배포 전), 타사 서버리스 보안 모델 비교 조사</li>
+            </ul>
+            <ul class="chips">
+              <li>Go</li><li>Fission</li><li>Kubernetes</li><li>HPA</li><li>NetworkPolicy</li><li>RBAC</li><li>gVisor</li><li>Gateway API</li><li>Helm</li><li>Figma</li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h4>Pipeline(Spinnaker) · NKS 배포 플랫폼 운영</h4>
+              <span class="when">2026.01 ~ 2026.06</span>
+            </div>
+            <p class="summary">Spinnaker 기반 NHN Cloud Pipeline 상품(일반·공공 리전)의 버전 업그레이드, 클러스터 운영, 보안 대응, 장애 복구를 맡았습니다.</p>
+            <ul>
+              <li><strong>Spinnaker 후속 버전 업그레이드 작업</strong> — 8개 마이크로서비스의 버전 간 코드 변경을 리뷰하고 사내 확장 모듈 빌드 오류 수정. 2026년 6월 기록 기준 브랜치 정리 단계</li>
+              <li><strong>NKS 클러스터 운영</strong> — 일반·공공 리전 클러스터 버전 업그레이드와 정기 릴리스, 클러스터 네트워크(CNI) 장애 원인 파악·복구</li>
+              <li><strong>운영 이슈 분석</strong> — Tekton 이미지 스캔 간헐 실패를 공유 볼륨 동시 접근 경쟁 조건으로 규명, 플러그인 저장소 폴링 개선(알파 적용·검증: 기본 저장소 폴링 중단, 커스텀 저장소 주기 60초 → 1시간)</li>
+              <li><strong>보안·문서화</strong> — 보안 점검 조치와 컨테이너 보안 솔루션 업그레이드, Spinnaker 12개 컴포넌트 아키텍처 문서화, n8n·Claude 기반 자연어 파이프라인 생성 도우미 프로토타입</li>
+            </ul>
+            <ul class="chips">
+              <li>Spinnaker</li><li>Kubernetes (NKS)</li><li>Tekton</li><li>Trivy</li><li>Valkey</li><li>NeuVector</li><li>n8n</li>
+            </ul>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h4>AI 코딩 에이전트 기반 개발 프로세스</h4>
+              <span class="when">2026.01 ~ 현재</span>
+            </div>
+            <p class="summary">Claude Code를 개발·리뷰·검증 과정에 도입하고, 운영 규칙과 회고 절차를 세웠습니다.</p>
+            <ul>
+              <li>작성·테스트·리뷰를 분리한 개발 게이트 운영, 관점이 다른 리뷰 에이전트의 병렬 리뷰·교차 판정과 구현자·검증자 분리 정착</li>
+              <li>작업 누락·과설계 사례를 회고해 원인과 재발 방지 규칙을 지식베이스에 반영</li>
+            </ul>
+            <ul class="chips">
+              <li>Claude Code</li>
+            </ul>
+          </article>
+
+          <details class="more">
+            <summary>이전 프로젝트 <span>2021.08 ~ 2025.12 · 4건</span></summary>
+            <div class="projects">
+
+              <article class="project compact">
+                <div class="project-top">
+                  <h4>Cloud Functions 플랫폼 상용화 및 운영 안정화</h4>
+                  <span class="when">2025.01 ~ 2025.12</span>
+                </div>
+                <p class="summary">서버리스 실행 플랫폼의 상용화와 운영 안정화를 맡아 모니터링, 성능 최적화, API Gateway 연동, 보안 검수 대응까지 수행했습니다.</p>
+                <ul>
+                  <li>Prometheus·Thanos 기반 지표 수집과 함수 실행 리소스·과금 데이터 수집 구조 설계, 사용자별 과금 연동</li>
+                  <li>Loki·Fluentd·Logstash 기반 로그 수집 체계 개선</li>
+                  <li>gVisor·WasmEdge·SpinKube 실행 환경 검토, 콜드 스타트·HTTP 트리거 성능 최적화</li>
+                  <li>API Gateway 트리거 연동, 도메인·DNS 마이그레이션, 인증·과금 정책 설계로 알파·베타 론칭 지원</li>
+                  <li>이미지 취약점 대응, HTTPS/SSL, VPC·NetworkPolicy 검토 등 보안 검수 대응</li>
+                </ul>
+                <ul class="chips"><li>Fission</li><li>Kubernetes</li><li>API Gateway</li><li>Prometheus</li><li>Thanos</li><li>Loki</li><li>gVisor</li><li>WasmEdge</li></ul>
+              </article>
+
+              <article class="project compact">
+                <div class="project-top">
+                  <h4>Cloud Functions(FaaS) 설계 및 Spinnaker 운영 고도화</h4>
+                  <span class="when">2024.01 ~ 2024.12</span>
+                </div>
+                <p class="summary">FaaS 아키텍처 설계와 핵심 트리거 기능을 개발하고, Spinnaker 정기 업그레이드를 병행했습니다.</p>
+                <ul>
+                  <li>Fission·Knative 기반 FaaS 아키텍처 설계와 HTTP·Timer·Kafka 트리거 개발</li>
+                  <li>Istio 라우팅, Namespace·리소스 생성 로직, Object Storage 연계 코드 에디터 통합</li>
+                  <li>Spinnaker 1.25 → 1.32 정기 업그레이드, Front50·Clouddriver 메모리 이슈 분석·해결</li>
+                  <li>Prometheus·Mimir 기반 모니터링 구조와 과금 연계 방향 수립</li>
+                  <li>NKS·Kuryr·Multus CNI 등 네트워크·보안 구성 검토, CKA 취득</li>
+                </ul>
+                <ul class="chips"><li>Fission</li><li>Knative</li><li>Istio</li><li>Spinnaker</li><li>Jenkins</li><li>Tekton</li><li>Mimir</li></ul>
+              </article>
+
+              <article class="project compact">
+                <div class="project-top">
+                  <h4>Spinnaker · Kubernetes 기반 배포 플랫폼 개선</h4>
+                  <span class="when">2023.01 ~ 2023.12</span>
+                </div>
+                <p class="summary">사내 배포 플랫폼 아키텍처를 분석·개선하며 업그레이드, 캐시 안정화, 배포 자동화, HA 구성 검토를 수행했습니다.</p>
+                <ul>
+                  <li>Spinnaker 아키텍처 분석과 1.21 → 1.23 업그레이드, Clouddriver·Orca·Gate 성능 최적화·오류 수정</li>
+                  <li>Redis → EasyCache(관리형 Redis) 전환, 캐시 삭제 API 개발, 캐시 동기화·Readiness 이슈 해결</li>
+                  <li>Helm·Tekton 기반 CI/CD 자동화, 단계별 배포 전략 수립</li>
+                  <li>NKS 노드 HA 구성 검토, 네트워크 ACL·VPC 연결(Service Endpoint, NLB) 검증</li>
+                  <li>배포 플랫폼 아키텍처 발표, 내부 교육 자료 정리, 코드 리뷰·문서화로 기술 공유</li>
+                </ul>
+                <ul class="chips"><li>Spinnaker</li><li>Kubernetes</li><li>Helm</li><li>Tekton</li><li>Jenkins</li><li>Redis</li></ul>
+              </article>
+
+              <article class="project compact">
+                <div class="project-top">
+                  <h4>사내 DB · 인증 관리 시스템 운영 개선</h4>
+                  <span class="when">2021.08 ~ 2022.12</span>
+                </div>
+                <p class="summary">입사 초기 데이터베이스 관리 시스템과 인증 체계를 운영·개선하고, AI 플랫폼과 GitOps 도구 도입을 검토했습니다.</p>
+                <ul>
+                  <li>DB 관리 시스템의 SQL 파서 검증 로직 최적화, 서버 교체, 스키마 추출 로직 개선</li>
+                  <li>기존 인증 체계를 Keycloak으로 이관하고 SSO 문제 해결, 네트워크 ACL·RBAC 권한 관리</li>
+                  <li>Kubeflow 파이프라인·Argo CD 등 플랫폼 기술 검토, 인수인계 문서화와 운영 스크립트 자동화</li>
+                </ul>
+                <ul class="chips"><li>SQL</li><li>Keycloak</li><li>Kubernetes</li><li>Kubeflow</li><li>Argo CD</li></ul>
+              </article>
+
+            </div>
+          </details>
+
+        </div>
+      </div>
+
+      <!-- NTechService -->
+      <div class="company">
+        <div class="company-head">
+          <h3>NTechService</h3>
+          <div class="period">2013.03 ~ 2021.08</div>
+          <div class="team">개발팀 · 대리 → 과장</div>
+        </div>
+        <div class="projects">
+
+          <article class="project compact">
+            <div class="project-top">
+              <h4>대형 포털 부동산 서비스 매물 검증 시스템 개선</h4>
+              <span class="when">2019.04 ~ 2021.08</span>
+            </div>
+            <p class="summary">매물 검증, 상태 관리, 데이터 동기화를 담당하는 대규모 서비스 백엔드를 운영하며 검증 프로세스와 기능을 개편했습니다.</p>
+            <ul>
+              <li>신규 매물 검증 방식 2종 도입·연동과 서비스 운영 안정화</li>
+              <li>매물 사진 모자이크 처리 개선, 매물 관리 업무 시스템 이관</li>
+              <li>금전적 가치와 직결된 매물 등록·검증 상태 관리를 책임지고, 서비스 간 데이터 동기화 정합성 유지</li>
+            </ul>
+            <ul class="chips"><li>Spring</li><li>Oracle</li><li>Tomcat</li><li>Apache</li><li>JSP</li><li>JavaScript</li></ul>
+          </article>
+
+          <article class="project compact">
+            <div class="project-top">
+              <h4>원격 모바일 단말 테스트 시스템</h4>
+              <span class="when">2014.03 ~ 2019.04</span>
+            </div>
+            <p class="summary">모바일 단말 원격 제어·테스트 환경 구축 프로젝트에서 Agent, 예약 웹, 캡처 모듈, 사용자 프로그램까지 폭넓게 맡았습니다.</p>
+            <ul>
+              <li>MFC 기반 Windows 모바일 Agent를 Java 애플리케이션으로 전환</li>
+              <li>Android 버전별 C/C++ 화면 캡처 모듈 유지보수, PC-모바일 연결 Client를 JavaFX로 개발</li>
+              <li>ELK 도입으로 단말 연결 상태 모니터링 강화, Cubrid → MySQL 전환</li>
+            </ul>
+            <ul class="chips"><li>Java</li><li>C/C++</li><li>JavaFX</li><li>MFC</li><li>Spring</li><li>MySQL</li><li>ELK</li></ul>
+          </article>
+
+          <article class="project compact">
+            <div class="project-top">
+              <h4>서버 모니터링 Agent 이종 OS(Solaris · AIX) 포팅</h4>
+              <span class="when">2013.06 ~ 2014.03</span>
+            </div>
+            <ul>
+              <li>Solaris kstat, AIX Perfstat API로 OS별 지표 수집 Agent를 C로 포팅·구현</li>
+              <li>상시 구동 Agent에 맞춘 메모리 관리 설계, 테스트 코드와 코드 리뷰로 메모리 누수 방지</li>
+            </ul>
+            <ul class="chips"><li>C</li><li>C++</li><li>Solaris</li><li>AIX</li></ul>
+          </article>
+
+          <article class="project compact">
+            <div class="project-top">
+              <h4>e-교과서 다운로드 서비스 유지보수</h4>
+              <span class="when">2013.03 ~ 2013.06</span>
+            </div>
+            <ul>
+              <li>교과서 파일 업로드 자동화 프로그램 제작, 다운로드 쿼리 최적화</li>
+              <li>Code Coverage 관리, SVN 기반 형상관리와 코드 리뷰</li>
+            </ul>
+            <ul class="chips"><li>Spring</li><li>Cubrid</li><li>Tomcat</li><li>SVN</li></ul>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- VisionIC -->
+      <div class="company">
+        <div class="company-head">
+          <h3>VisionIC</h3>
+          <div class="period">2009.07 ~ 2013.02</div>
+          <div class="team">개발팀 · 사원 → 대리</div>
+        </div>
+        <div class="projects">
+
+          <article class="project compact">
+            <div class="project-top">
+              <h4>IPeople — 소셜 기반 일정 관리 웹 애플리케이션</h4>
+              <span class="when">2012.06 ~ 2013.02</span>
+            </div>
+            <ul>
+              <li>웹 파트를 단독으로 맡아 설계, DB 모델링, 배포까지 전 주기 수행</li>
+              <li>로그인·회원가입 흐름과 DB Session·Local 저장소 기반 세션 관리 구현</li>
+              <li>ExtJS4 Calendar 커스터마이징으로 월간·주간 일정 기능 구현</li>
+            </ul>
+            <ul class="chips"><li>Spring</li><li>iBatis</li><li>Tiles</li><li>JBoss</li><li>MySQL</li><li>ExtJS4</li></ul>
+          </article>
+
+          <article class="project compact">
+            <div class="project-top">
+              <h4>EMS 업그레이드</h4>
+              <span class="when">2011.02 ~ 2011.09</span>
+            </div>
+            <ul>
+              <li>메일 발송 공통 로직과 주소록 기능 개발</li>
+              <li>사용자 1,000명 규모 웹 애플리케이션 속도 개선, Maximo 디버깅으로 iframe refresh 문제 해결</li>
+            </ul>
+            <ul class="chips"><li>WebLogic</li><li>Oracle</li><li>IBM Maximo</li></ul>
+          </article>
+
+          <article class="project compact">
+            <div class="project-top">
+              <h4>설비생애이력관리 프로그램</h4>
+              <span class="when">2009.07 ~ 2010.12</span>
+            </div>
+            <ul>
+              <li>YUI 기반 페이징 로직 구현과 JavaScript 디버깅</li>
+              <li>Oracle Procedure·Function으로 복잡한 SQL 간소화, WebLogic·WebSphere 운영과 SVN 형상관리</li>
+            </ul>
+            <ul class="chips"><li>WebLogic</li><li>WebSphere</li><li>Oracle</li><li>YUI</li><li>SVN</li></ul>
+          </article>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills" aria-labelledby="skills-title">
+    <div class="wrap">
+      <div class="section-title"><h2 id="skills-title">기술</h2></div>
+      <div class="skills">
+        <div class="card skill-group">
+          <h3>LANGUAGES</h3>
+          <ul class="chips"><li>Java</li><li>Go</li><li>Python</li><li>C</li><li>C++</li><li>JavaScript</li></ul>
+        </div>
+        <div class="card skill-group">
+          <h3>BACKEND</h3>
+          <ul class="chips"><li>Spring Boot</li><li>Spring MVC</li><li>Spring Kafka</li><li>Spring Security</li><li>JPA / Hibernate</li><li>iBatis</li><li>JSP</li></ul>
+        </div>
+        <div class="card skill-group">
+          <h3>CLOUD NATIVE</h3>
+          <ul class="chips"><li>Kubernetes</li><li>NHN Cloud NKS</li><li>Docker</li><li>Helm</li><li>Istio</li><li>Gateway API</li><li>gVisor</li><li>Fission</li><li>Knative</li><li>WasmEdge / SpinKube</li></ul>
+        </div>
+        <div class="card skill-group">
+          <h3>CI/CD · DEVOPS</h3>
+          <ul class="chips"><li>Spinnaker</li><li>Tekton</li><li>Jenkins</li><li>Argo CD</li><li>Trivy</li><li>Terraform</li><li>Ansible</li></ul>
+        </div>
+        <div class="card skill-group">
+          <h3>MESSAGING · EVENT</h3>
+          <ul class="chips"><li>Apache Kafka</li><li>Kafka Streams</li><li>CloudEvents</li><li>Apicurio Registry</li><li>AWS Event Ruler</li></ul>
+        </div>
+        <div class="card skill-group">
+          <h3>DATA · STORAGE</h3>
+          <ul class="chips"><li>MySQL</li><li>PostgreSQL</li><li>Oracle</li><li>ClickHouse</li><li>MongoDB</li><li>Redis / Valkey</li><li>Cubrid</li></ul>
+        </div>
+        <div class="card skill-group">
+          <h3>OBSERVABILITY</h3>
+          <ul class="chips"><li>OpenTelemetry</li><li>Prometheus</li><li>Thanos</li><li>Mimir</li><li>Grafana</li><li>Loki</li><li>Fluentd</li><li>ELK</li></ul>
+        </div>
+        <div class="card skill-group">
+          <h3>LEGACY · SYSTEMS</h3>
+          <ul class="chips"><li>WebLogic</li><li>WebSphere</li><li>JBoss</li><li>Tomcat</li><li>JavaFX</li><li>MFC</li><li>Solaris</li><li>AIX</li><li>CentOS</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" aria-labelledby="education-title">
+    <div class="wrap">
+      <div class="section-title"><h2 id="education-title">학력 · 자격 · 활동</h2></div>
+      <div class="edu">
+        <article class="card">
+          <div class="meta">학력</div>
+          <h3>상명대학교 소프트웨어학과</h3>
+          <p>학사 · 2002.03 ~ 2009.02</p>
+        </article>
+        <article class="card">
+          <div class="meta">자격</div>
+          <h3>CKA</h3>
+          <p>Certified Kubernetes Administrator · CNCF · 2024.03</p>
+        </article>
+        <article class="card">
+          <div class="meta">활동</div>
+          <h3>발표 · 문서화</h3>
+          <ul>
+            <li>이벤트 라우팅 플랫폼 사내 아키텍처 리뷰 발표 (2026)</li>
+            <li>배포 플랫폼 아키텍처 사내 발표 (2023)</li>
+            <li>사내 위키 기술 문서화 — 아키텍처·운영 가이드, OpenTelemetry 도입, 인수인계</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 김의식 · 2026</div>
+</footer>
+
+<script>
+// Keep expanded sections in print, then restore the reader's screen state.
+addEventListener('beforeprint', () => {
+  document.querySelectorAll('details.more:not([open])').forEach(detail => {
+    detail.open = true;
+    detail.dataset.printOpened = '';
+  });
+});
+addEventListener('afterprint', () => {
+  document.querySelectorAll('details[data-print-opened]').forEach(detail => {
+    detail.open = false;
+    delete detail.dataset.printOpened;
+  });
+});
+</script>
+</body>
+</html>

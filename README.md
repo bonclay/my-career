@@ -8,8 +8,8 @@
 
 ## Vercel 배포
 
-GitHub 저장소 `bonclay/my-career`를 Vercel에 연결합니다. 프레임워크는 Other, 빌드 명령은 없음, 배포 폴더는 저장소 루트(`.`)로 설정합니다. `vercel.json`에 같은 설정이 들어 있습니다.
+GitHub 저장소 `bonclay/my-career`는 Vercel 프로젝트 `job-history/my-career`에 연결되어 있습니다. 프레임워크는 Other, 빌드 명령은 없음, 배포 폴더는 저장소 루트(`.`)로 설정합니다. `vercel.json`에 같은 설정이 들어 있습니다.
 
-GitHub 연결을 완료하면 `main`에 push할 때 자동으로 배포됩니다. `.vercelignore`는 `index.html`과 배포 설정만 업로드하도록 제한합니다.
+`main`에 push할 때 Vercel이 자동으로 배포합니다. `.vercelignore`는 `index.html`과 배포 설정만 업로드하도록 제한합니다.
 
 이력서 원본, 내부 위키 자료, 계정 정보는 저장소에 포함하지 않습니다.
